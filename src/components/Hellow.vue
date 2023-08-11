@@ -19,4 +19,8 @@ export default {
 </script>
 <style lang="less" scoped>
 /* @import url(); 引入css类 */
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>
