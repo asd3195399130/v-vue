@@ -1,5 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
-  publicPath: "/v-vuegit/",
+  publicPath: "/v-vue/",
   transpileDependencies: true,
 });
