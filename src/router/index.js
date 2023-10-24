@@ -1,62 +1,42 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import Yama from "@/components/Yama.vue";
-import Hell from "@/components/Hell.vue";
-import YanWangDian from "@/components/阎王殿.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    redirect: { name: "home" },
+
+    path: '/',
+    name: 'home',
+    component: HomeView
   },
+  
   {
-    path: "/home",
-    name: "home",
-    component: HomeView,
-    props: true,
-    children: [
-      {
-        path: "yama",
-        name: "Yama",
-        component: Yama,
-        children: [
-          {
-            path: "YanWangDian",
-            name: "YanWangDian",
-            component: YanWangDian,
-            props($route) {
-              return {
-                id: $route.query.id,
-                name: $route.query.name,
-                run: $route.query.run,
-              };
-            },
-          },
-        ],
-      },
-      {
-        path: "hell",
-        name: "Hell",
-        component: Hell,
-      },
-    ],
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-];
+    path: '/hello',
+    name: "HelloWorld", 
+
+    component: () => import('../components/HelloWorld.vue'),
+    children: [{
+      path: 'LeftList',
+      name: 'LeftList',
+      component: () => import('../components/LeftList.vue'),
+      children: [{
+        path: '/about',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+      },]
+    }]
+  }
+]
 
 const router = new VueRouter({
-  routes,
-});
+  mode: 'hash',
+  base: process.env.BASE_URL,
+  routes
+})
 
-export default router;
+export default router

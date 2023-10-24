@@ -1,40 +1,60 @@
+<style scoped>
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.left {
+  position: relative;
+  width: 70%;
+
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  border-radius: 10px;
+}
+p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #6d5ea3;
+  margin-bottom: 10px;
+}
+.box {
+  width: 100px;
+  height: 50px;
+  background: #6d5ea3;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20% auto;
+}
+</style>
 <template>
   <div class="home">
-  <router-link to="/home/Yama/YanWangDian" replace="true">阎王殿</router-link>
- &emsp;
-  <router-link to="/home/Hell">十大鬼王</router-link>
-<div >
-<router-view></router-view>
-</div>
-
+    <div>
+      <div class="box" @click="addBtn">
+        <div>
+          <img
+            src="https://files.codelife.cc/icons/todo.svg"
+            alt=""
+            id="loge"
+          />
+        </div>
+        <p>待办事务项</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "HomeView",
+  components: {},
+  methods: {
+    addBtn() {
+      this.$router.push({ name: "HelloWorld" });
+    },
+  },
+};
 </script>
-<style scoped>
-
- @keyframes blinking {
-  0%{opacity: 1;}
-  50%{opacity: 0;}
-  100%{opacity:1}
- }
- a{
-  animation: blinking 1s infinite;
-  font-family: "楷体";
-  font-size: 30px;
-  font-weight: bold;
-  color: green;
-  text-decoration: none;
- }
-
-</style>
